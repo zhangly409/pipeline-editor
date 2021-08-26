@@ -57,7 +57,7 @@ export default {
       this.graph = new G6.Graph({
         container: "view-page",
         width: container.style.width ? container.style.width : this.width,
-        height: container.style.height ? container.style.height: 360,
+        height: container.style.height ? container.style.height: 800,
         plugins: [grid],
         renderer: "svg",
         modes: {
@@ -319,7 +319,7 @@ export default {
 }
 .view-page {
   overflow: auto;
-  height: 360px;
+  height: 800px;
   width: 100%;
 }
 </style>
