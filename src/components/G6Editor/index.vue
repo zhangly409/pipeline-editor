@@ -24,7 +24,7 @@
       <ViewPage ref="viewpage" :is-task-view-show="isTaskViewShow" :width="width" />
       <Flow />
     </div>
-    <!-- <el-dialog
+    <el-dialog
       id="task_dialog"
       :title="stageName + ' — 任务设置'"
       width="80%"
@@ -39,8 +39,6 @@
         <div class="bottom-container">
           <TaskPage
             ref="detailPanel"
-            :project-members="projectMembers"
-            :jigsaw-project-id="jigsawProjectId"
             :node="node"
           />
         </div>
@@ -50,22 +48,22 @@
         <el-button @click="taskEditDialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="saveTaskGraph">确 定</el-button>
       </span>
-    </el-dialog> -->
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import Toolbar from './Toolbar'
-// import TaskToolbar from './TaskToolbar'
+import TaskToolbar from './TaskToolbar'
 import Page from './Page'
 import Flow from './Flow'
 import Editor from './Base/Editor'
 import command from './command'
-// import TaskPage from '@/components/TaskPage'
+import TaskPage from './TaskPage'
 import eventBus from '@/utils/eventBus'
 import ViewPage from './ViewPage'
-// import taskCommand from '@/taskCommand'
-// import taskEditor from '@/components/Base/TaskEditor'
+import taskCommand from './taskCommand'
+import taskEditor from './Base/TaskEditor'
 
 export default {
   name: 'G6Editor',
@@ -73,8 +71,8 @@ export default {
     Toolbar,
     Page,
     Flow,
-    // TaskPage,
-    // TaskToolbar,
+    TaskPage,
+    TaskToolbar,
     ViewPage,
   },
   props: {
@@ -130,8 +128,8 @@ export default {
     init() {
       this.editor = new Editor()
       this.command = new command(this.editor)
-      // this.taskEditor = new taskEditor()
-      // this.taskCommand = new taskCommand(this.taskEditor)
+      this.taskEditor = new taskEditor()
+      this.taskCommand = new taskCommand(this.taskEditor)
       let self = this
       eventBus.$on('taskViewSwitch', value => {
         self.isTaskViewShow = value.isTaskViewShow

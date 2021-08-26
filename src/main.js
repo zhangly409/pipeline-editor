@@ -30,10 +30,15 @@ import {
   Col,
   Collapse,
   CollapseItem,
+  Dialog,
+  Form,
+  FormItem
 } from 'element-ui'
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 }
 Vue.prototype.$message = Message
 Vue.prototype._ = _
+Vue.use(Form)
+Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(Row)
 Vue.use(Col)
@@ -56,6 +61,7 @@ Vue.use(Button)
 Vue.use(Card)
 Vue.use(ButtonGroup)
 Vue.use(Tooltip)
+Vue.use(Dialog)
 new Vue({
   render: h => h(App),
   store,
